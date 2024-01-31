@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -12,17 +14,14 @@ import lombok.NoArgsConstructor;
 @Table(name= "habitaciones")
 public class Habitacion {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //25 de perros , 10 de gatos se va a limitar por número de habit y fecha
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idHabitacion;
-    @Column(length = 60)
+    @Column(nullable = false)
     private double tarifa;
-    @Column(length = 150)
+    @Column(length = 60,nullable = false)
     private String description;
-    @Column(length = 60)
+    @Column(length = 30,nullable = false)
     private String tipoAnimal;
-
-
-    //Falta relación  con reservas
-
+    @ManyToMany
+    private List<Mascota> mascotas;
 }

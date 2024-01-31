@@ -17,22 +17,18 @@ public class Mascota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMascota;
-    @Column(length = 60)
+    @Column(length = 60,nullable = false)
     private String nombre;
-    @Column(length = 60)
+    @Column(length = 50,nullable = false)
     private String raza;
-    @Column (nullable = false)
+    @Column(nullable = false)
     private int edad;
-    @Column(length = 60)
+    @Column(length = 30,nullable = false)
     private String tamano;
-    @Column(length = 60)
+    @Column (length = 30,nullable = false)
     private String tipoMascota;
+    @ManyToOne
+    @JoinColumn(name="id_cliente",nullable = false,foreignKey = @ForeignKey(name="FK_mascotas_clientes"))
 
-    //@OneToMany
-    //un list de reserva
-    //falta la relación
-/*    @OneToMany(mappedBy = "editorial",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
-    private List<> libros;*/
+    private Cliente cliente;
 }

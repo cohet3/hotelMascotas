@@ -16,12 +16,6 @@ public class Factura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idFactura;
-
     private int idCliente;
-
     private int idReserva;
-
-    //detalle va a tener id factura y un consecutivo
-    //
-
 }
