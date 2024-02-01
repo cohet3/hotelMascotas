@@ -16,6 +16,13 @@ public class Factura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idFactura;
-    private int idCliente;
-    private int idReserva;
+
+    @OneToMany(mappedBy = "f1",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<DetalleFactura> detalles;
+
+    @ManyToOne
+    @JoinColumn(name= "idCliente", nullable = false, foreignKey = @ForeignKey(name= "FK_factura_cliente"))
+    private Cliente c1;
+
+
 }

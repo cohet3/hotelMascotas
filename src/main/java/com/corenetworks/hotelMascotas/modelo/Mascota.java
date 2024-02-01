@@ -26,9 +26,12 @@ public class Mascota {
     @Column(length = 30,nullable = false)
     private String tamano;
     @Column (length = 30,nullable = false)
-    private String tipoMascota;
-    @ManyToOne
-    @JoinColumn(name="id_cliente",nullable = false,foreignKey = @ForeignKey(name="FK_mascotas_clientes"))
+    private String tipoHabitacion;
 
-    private Cliente cliente;
+    @OneToMany(mappedBy = "m1",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<Reserva> reservas;
+
+    @ManyToOne
+    @JoinColumn(name= "idCliente", nullable = false, foreignKey = @ForeignKey(name= "FK_mascota_cliente"))
+    private Cliente c1;
 }

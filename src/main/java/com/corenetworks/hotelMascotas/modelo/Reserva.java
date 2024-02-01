@@ -1,6 +1,7 @@
 package com.corenetworks.hotelMascotas.modelo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,9 +21,12 @@ public class Reserva {
     private int idReserva;
     private LocalDate fechaEntrada;
     private LocalDate fechaSalida;
-    @Id
-    private int idMascota;
-    @Id
-    private int idHabitacion;
+    private double precio;
 
+    @ManyToOne
+    @JoinColumn(name= "idMascota", nullable = false, foreignKey = @ForeignKey(name= "FK_reserva_mascota"))
+    private Mascota m1;
+
+    @OneToMany(mappedBy = "idHabitacion",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<Habitacion> habitaciones;
 }

@@ -21,7 +21,9 @@ public class Habitacion {
     @Column(length = 60,nullable = false)
     private String description;
     @Column(length = 30,nullable = false)
-    private String tipoAnimal;
-    @ManyToMany
-    private List<Mascota> mascotas;
+    private String tipoHabitacion;
+
+
+    @OneToMany(mappedBy = "r1",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<Reserva> reservas;
 }

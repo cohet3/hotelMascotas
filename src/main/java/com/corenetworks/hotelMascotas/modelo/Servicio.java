@@ -1,7 +1,6 @@
 package com.corenetworks.hotelMascotas.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,5 +11,16 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "servicios")
 public class Servicio {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idServicio;
+    @Column(length = 120)
+    private String concepto;
+    private double precio;
+
+    @ManyToOne
+    @JoinColumn(name= "idReserva", nullable = false, foreignKey = @ForeignKey(name= "FK_servicio_reserva"))
+    private Reserva r1;
+
+
 }

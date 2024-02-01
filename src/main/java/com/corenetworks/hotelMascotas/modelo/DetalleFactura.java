@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -14,9 +16,10 @@ public class DetalleFactura {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idDetalleFactura;
-
+    @Column(length = 120)
     private String concepto;
     private double precio;
+    private LocalDate fechaFactura;
     @OneToOne
     @JoinColumn(name = "id_cliente", nullable = false, foreignKey = @ForeignKey(name = "FK_clientes_detalles_facturas"))
     private Cliente cliente;
