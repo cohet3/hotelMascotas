@@ -23,9 +23,9 @@ public class Reserva {
     private LocalDate fechaSalida;
     private double precio;
 
-/*    @ManyToOne
+    @ManyToOne
     @JoinColumn(name= "idMascota", nullable = false, foreignKey = @ForeignKey(name= "FK_reserva_mascota"))
-    private Mascota m1;*/
+    private Mascota mascota;
 
     @ManyToOne
     @JoinColumn(name= "idHabitacion", nullable = false, foreignKey = @ForeignKey(name= "FK_reserva_habitacion"))
