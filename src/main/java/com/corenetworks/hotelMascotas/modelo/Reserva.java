@@ -25,9 +25,10 @@ public class Reserva {
 
 /*    @ManyToOne
     @JoinColumn(name= "idMascota", nullable = false, foreignKey = @ForeignKey(name= "FK_reserva_mascota"))
-    private Mascota m1;
+    private Mascota m1;*/
 
-    @OneToMany(mappedBy = "idHabitacion",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private List<Habitacion> habitaciones;*/
+    @ManyToOne
+    @JoinColumn(name= "idHabitacion", nullable = false, foreignKey = @ForeignKey(name= "FK_reserva_habitacion"))
+    private Habitacion habitacion;
 
 }
