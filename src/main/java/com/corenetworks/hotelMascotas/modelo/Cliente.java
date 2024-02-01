@@ -25,10 +25,10 @@ public class Cliente {
     private String telefono;
 
 
-    @OneToMany(mappedBy = "c1",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Mascota> mascotas;
 
-    @OneToMany(mappedBy = "c1",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Factura> facturas;
 
 }

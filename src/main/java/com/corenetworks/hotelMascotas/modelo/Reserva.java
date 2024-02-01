@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="reservas")
-@IdClass(ReservaPK.class)
+/*@IdClass(ReservaPK.class)*/
 public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +23,11 @@ public class Reserva {
     private LocalDate fechaSalida;
     private double precio;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name= "idMascota", nullable = false, foreignKey = @ForeignKey(name= "FK_reserva_mascota"))
     private Mascota m1;
 
     @OneToMany(mappedBy = "idHabitacion",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private List<Habitacion> habitaciones;
+    private List<Habitacion> habitaciones;*/
+
 }

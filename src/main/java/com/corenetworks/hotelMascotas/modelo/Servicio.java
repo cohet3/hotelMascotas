@@ -17,10 +17,10 @@ public class Servicio {
     @Column(length = 120)
     private String concepto;
     private double precio;
-
+/*
     @ManyToOne
     @JoinColumn(name= "idReserva", nullable = false, foreignKey = @ForeignKey(name= "FK_servicio_reserva"))
-    private Reserva r1;
+    private Reserva r1;*/
 
 
 }

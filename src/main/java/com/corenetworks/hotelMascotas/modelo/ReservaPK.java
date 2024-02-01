@@ -1,5 +1,6 @@
 package com.corenetworks.hotelMascotas.modelo;
 
+/*
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.JoinColumn;
@@ -36,4 +37,4 @@ public class ReservaPK implements Serializable {
     public int hashCode() {
         return Objects.hash(h1, m1);
     }
-}
+}*/

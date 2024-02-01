@@ -24,6 +24,6 @@ public class Habitacion {
     private String tipoHabitacion;
 
 
-    @OneToMany(mappedBy = "r1",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private List<Reserva> reservas;
+/*    @OneToMany(mappedBy = "r1",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<Reserva> reservas;*/
 }

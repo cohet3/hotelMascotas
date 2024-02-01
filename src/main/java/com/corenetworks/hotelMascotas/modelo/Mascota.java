@@ -28,10 +28,11 @@ public class Mascota {
     @Column (length = 30,nullable = false)
     private String tipoHabitacion;
 
-    @OneToMany(mappedBy = "m1",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private List<Reserva> reservas;
+/*    @OneToMany(mappedBy = "m1",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<Reserva> reservas;*/
 
     @ManyToOne
     @JoinColumn(name= "idCliente", nullable = false, foreignKey = @ForeignKey(name= "FK_mascota_cliente"))
-    private Cliente c1;
+    private Cliente cliente;
+
 }
