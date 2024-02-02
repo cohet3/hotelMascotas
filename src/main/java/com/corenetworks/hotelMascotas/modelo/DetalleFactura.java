@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-
+import java.util.List;
 
 @Entity
 @Data
@@ -21,6 +21,9 @@ public class DetalleFactura {
     private String concepto;
     private double precio;
     private LocalDate fechaFactura;
+    @OneToOne
+    @JoinColumn(name = "id_cliente", nullable = false, foreignKey = @ForeignKey(name = "FK_clientes_detalles_facturas"))
+    private Cliente cliente;
     @ManyToOne
     @JoinColumns({
             @JoinColumn(name = "id_reserva", referencedColumnName = "idReserva", insertable = false, updatable = false),
@@ -28,11 +31,10 @@ public class DetalleFactura {
             @JoinColumn(name = "idHabitacion", referencedColumnName = "idHabitacion", insertable = false, updatable = false)
     })
     private Reserva reserva;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_factura", nullable = false, foreignKey = @ForeignKey(name = "FK_facturas_detalles_facturas"))
     private Factura factura;
     @ManyToOne
-    @JoinColumn(name= "id_servicio", nullable = false, foreignKey = @ForeignKey(name= "FK_servicios_detalles_facturas"))
+    @JoinColumn(name = "id_servicio", nullable = false, foreignKey = @ForeignKey(name = "FK_servicios_detalles_facturas"))
     private Servicio servicio;
-
 }

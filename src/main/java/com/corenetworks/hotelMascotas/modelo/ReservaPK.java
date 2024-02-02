@@ -13,10 +13,13 @@ import java.util.Objects;
 @AllArgsConstructor
 @Data
 @Embeddable
+
+
 public class ReservaPK implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idReserva;
+
     @ManyToOne
     @JoinColumn(name = "idMascota", nullable = false, foreignKey = @ForeignKey(name = "FK_reserva_mascota"))
     private Mascota mascota;
@@ -24,6 +27,7 @@ public class ReservaPK implements Serializable {
     @ManyToOne
     @JoinColumn(name = "idHabitacion", nullable = false, foreignKey = @ForeignKey(name = "FK_reserva_habitacion"))
     private Habitacion habitacion;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -31,6 +35,7 @@ public class ReservaPK implements Serializable {
         ReservaPK reservaPK = (ReservaPK) o;
         return idReserva == reservaPK.idReserva && Objects.equals(mascota, reservaPK.mascota) && Objects.equals(habitacion, reservaPK.habitacion);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(idReserva, mascota, habitacion);
