@@ -28,7 +28,6 @@ public class DetalleFactura {
             @JoinColumn(name = "idHabitacion", referencedColumnName = "idHabitacion", insertable = false, updatable = false)
     })
     private Reserva reserva;
-
     @ManyToOne
     @JoinColumn(name = "id_factura", nullable = false, foreignKey = @ForeignKey(name = "FK_facturas_detalles_facturas"))
     private Factura factura;
