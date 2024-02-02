@@ -1,10 +1,7 @@
 package com.corenetworks.hotelMascotas.modelo;
 
-/*
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.ForeignKey;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,24 +14,25 @@ import java.util.Objects;
 @Data
 @Embeddable
 
+
 public class ReservaPK implements Serializable {
     @ManyToOne
-    @JoinColumn(name="id_habitacion", nullable = false, foreignKey = @ForeignKey(name="FK_reservas_habitaciones"))
-    private Habitacion h1;
-
+    @JoinColumn(name= "idMascota", nullable = false, foreignKey = @ForeignKey(name= "FK_reserva_mascota"))
+    private Mascota mascota;
+//@JoinTable no se usa porque esta el PK
     @ManyToOne
-    @JoinColumn(name="id_mascota", nullable = false, foreignKey = @ForeignKey(name="FK_reservas_mascotas"))
-    private Mascota m1;
+    @JoinColumn(name= "idHabitacion", nullable = false, foreignKey = @ForeignKey(name= "FK_reserva_habitacion"))
+    private Habitacion habitacion;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ReservaPK reservaPK = (ReservaPK) o;
-        return Objects.equals(h1, reservaPK.h1) && Objects.equals(h1, reservaPK.m1);
+        return Objects.equals(habitacion, reservaPK.habitacion) && Objects.equals(mascota, reservaPK.mascota);
     }
     @Override
     public int hashCode() {
-        return Objects.hash(h1, m1);
+        return Objects.hash(habitacion, mascota);
     }
-}*/
+}

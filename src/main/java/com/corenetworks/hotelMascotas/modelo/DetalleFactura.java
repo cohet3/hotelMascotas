@@ -23,10 +23,10 @@ public class DetalleFactura {
     @OneToOne
     @JoinColumn(name = "id_cliente", nullable = false, foreignKey = @ForeignKey(name = "FK_clientes_detalles_facturas"))
     private Cliente cliente;
-    @JsonIgnore
+/*    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_reservas", nullable = false, foreignKey = @ForeignKey(name = "FK_reservas_detalles_facturas"))
-    private Reserva reserva;
+    private Reserva reserva;*/
     @OneToOne
     @JoinColumn(name = "id_factura", nullable = false, foreignKey = @ForeignKey(name = "FK_facturas_detalles_facturas"))
     private Factura factura;

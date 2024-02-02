@@ -13,22 +13,16 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="reservas")
-/*@IdClass(ReservaPK.class)*/
+@Table(name="reservas_mascotas_habitaciones")
+@IdClass(ReservaPK.class)
 public class Reserva {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idReserva;
+    @Id
+    private Mascota mascota;
+    @Id
+    private Habitacion habitacion;
     private LocalDate fechaEntrada;
     private LocalDate fechaSalida;
     private double precio;
-
-    @ManyToOne
-    @JoinColumn(name= "idMascota", nullable = false, foreignKey = @ForeignKey(name= "FK_reserva_mascota"))
-    private Mascota mascota;
-
-    @ManyToOne
-    @JoinColumn(name= "idHabitacion", nullable = false, foreignKey = @ForeignKey(name= "FK_reserva_habitacion"))
-    private Habitacion habitacion;
 
 }
