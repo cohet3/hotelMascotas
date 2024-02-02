@@ -30,5 +30,4 @@ public class Cliente {
     //en caso de no necesitarlo para front, fuera linea 31
     @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Factura> facturas;
-
 }
