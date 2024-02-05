@@ -1,6 +1,7 @@
 package com.corenetworks.hotelMascotas.modelo;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +29,7 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Mascota> mascotas;
     //en caso de no necesitarlo para front, fuera linea 31
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Factura> facturas;
 }
