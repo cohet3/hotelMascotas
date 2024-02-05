@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -20,17 +21,18 @@ public class DetalleFactura {
     private String concepto;
     private double precio;
     private LocalDate fechaFactura;
-    @OneToOne
-    @JoinColumn(name = "id_cliente", nullable = false, foreignKey = @ForeignKey(name = "FK_clientes_detalles_facturas"))
-    private Cliente cliente;
-/*    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "id_reservas", nullable = false, foreignKey = @ForeignKey(name = "FK_reservas_detalles_facturas"))
-    private Reserva reserva;*/
-    @OneToOne
+    @JoinColumns({
+            @JoinColumn(name = "id_reserva", referencedColumnName = "idReserva", insertable = false, updatable = false),
+            @JoinColumn(name = "idMascota", referencedColumnName = "idMascota", insertable = false, updatable = false),
+            @JoinColumn(name = "idHabitacion", referencedColumnName = "idHabitacion", insertable = false, updatable = false)
+    })
+    private Reserva reserva;
+    @ManyToOne
     @JoinColumn(name = "id_factura", nullable = false, foreignKey = @ForeignKey(name = "FK_facturas_detalles_facturas"))
     private Factura factura;
     @ManyToOne
-    @JoinColumn(name = "id_servicio", nullable = false, foreignKey = @ForeignKey(name = "FK_servicios_detalles_facturas"))
+    @JoinColumn(name= "id_servicio", nullable = false, foreignKey = @ForeignKey(name= "FK_servicios_detalles_facturas"))
     private Servicio servicio;
+
 }

@@ -18,9 +18,4 @@ public class Servicio {
     private String concepto;
     private double precio;
 
-    @ManyToOne
-    @JoinColumn(name= "idFactura", nullable = false, foreignKey = @ForeignKey(name= "FK_servicio_factura"))
-    private Factura factura;
-
-
 }

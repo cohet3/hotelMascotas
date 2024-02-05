@@ -25,4 +25,5 @@ public class Reserva {
     private LocalDate fechaSalida;
     private double precio;
 
+
 }
