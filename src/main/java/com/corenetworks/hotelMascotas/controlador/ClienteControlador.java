@@ -23,7 +23,7 @@ public class ClienteControlador {
     }
 
     @PostMapping
-    public ResponseEntity<Cliente> insertar(@RequestBody Cliente c)throws Exception {
+    public ResponseEntity<Cliente> insertar( @RequestBody Cliente c)throws Exception {
         Cliente c1 = servicio.insertar(c);
         return new ResponseEntity<>(c1, HttpStatus.CREATED);
     }
