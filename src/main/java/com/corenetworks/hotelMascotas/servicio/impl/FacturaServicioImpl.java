@@ -18,4 +18,5 @@ public class FacturaServicioImpl extends CRUDImpl<Factura,Integer>implements IFa
     protected IGenericoRepositorio<Factura, Integer> getRepo(){
         return repo;
     }
+
 }

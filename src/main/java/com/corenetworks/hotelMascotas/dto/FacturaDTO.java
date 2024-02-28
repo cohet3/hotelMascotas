@@ -20,6 +20,7 @@ public class FacturaDTO {
     }
     public FacturaDTO castFacturaDto(Factura f){
         idFactura=getIdFactura();
+
         return this;
 
     }

@@ -18,6 +18,13 @@ import java.util.List;
 public class FacturaControlador {
     @Autowired
     private IFacturaServicio servicio;
+    @PostMapping
+    public ResponseEntity<FacturaDTO> insertarFactura(@RequestBody FacturaDTO f)throws Exception {
+        //no funciona
+        Factura f1 = f.castFactura();
+        f1 =servicio.insertar(f1);
+        return new ResponseEntity<>(f.castFacturaDto(f1), HttpStatus.CREATED);
+    }
 
     @GetMapping
     public ResponseEntity<List<FacturaDTO>> consultarTodos() throws Exception {
@@ -30,36 +37,35 @@ public class FacturaControlador {
         }
         return new ResponseEntity<>(facturasDTo, HttpStatus.OK);
     }
-
-    @PostMapping
-    public ResponseEntity<Factura> insertar(@RequestBody Factura f)throws Exception {
-        Factura f1 = servicio.insertar(f);
-        return new ResponseEntity<>(f1, HttpStatus.CREATED);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Factura> consultarUno(@PathVariable("id") int id)throws Exception {
-        Factura f1 = servicio.listarUno(id);
-        if (f1 == null) {
-            throw new ExcepcionPersonalizadaNoEncontrado("recurso no encontrado con ID " + id);
-        }
-        return new ResponseEntity<>(f1, HttpStatus.OK);
-    }
-
     @PutMapping
-    public ResponseEntity<Factura> modificar(@RequestBody Factura f)throws  Exception {
+    public ResponseEntity<FacturaDTO> modificarFactura(@RequestBody FacturaDTO f)throws  Exception {
+        //no funciona
         Factura f1 = servicio.listarUno(f.getIdFactura());
         if (f1==null) {
-            throw new ExcepcionPersonalizadaNoEncontrado("recurso no encontrado" +f.getIdFactura());
+            throw new ExcepcionPersonalizadaNoEncontrado("FActura no encontrada" +f.getIdFactura());
         }
-        return new ResponseEntity<>(servicio.modificar(f), HttpStatus.OK);
+        f1= servicio.modificar(f.castFactura());
+        return new ResponseEntity<>(f.castFacturaDto(f1), HttpStatus.OK);
     }
 
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<FacturaDTO> consultarUno(@PathVariable("id") Integer id)throws Exception {
+        Factura f1 = servicio.listarUno(id);
+        if (f1 == null) {
+            throw new ExcepcionPersonalizadaNoEncontrado("factura no encontrado con ID " + id);
+        }
+        return new ResponseEntity<>((new FacturaDTO()).castFacturaDto(f1), HttpStatus.OK);
+    }
+
+
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable ("id")int id)throws Exception {
+    public ResponseEntity<Void> eliminar(@PathVariable ("id")Integer id)throws Exception {
        Factura f1 = servicio.listarUno(id);
         if (f1 == null) {
-            throw new ExcepcionPersonalizadaNoEncontrado("recurso no encontrado con ID " + id);
+            throw new ExcepcionPersonalizadaNoEncontrado("Factura no encontrado con ID " + id);
         }
         servicio.eliminar(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

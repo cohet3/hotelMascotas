@@ -17,10 +17,9 @@ public class Factura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idFactura;
 
-
-
     @ManyToOne
-    @JoinColumn(name= "idCliente", nullable = false, foreignKey = @ForeignKey(name= "FK_factura_cliente"))
+    @JoinColumn(name= "idCliente", nullable = true, foreignKey = @ForeignKey(name= "FK_factura_cliente"))
+
     private Cliente cliente;
 
 
