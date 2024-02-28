@@ -1,6 +1,7 @@
 package com.corenetworks.hotelMascotas.controlador;
 
 
+import com.corenetworks.hotelMascotas.dto.ClienteDTO;
 import com.corenetworks.hotelMascotas.excepciones.ExcepcionPersonalizadaNoEncontrado;
 import com.corenetworks.hotelMascotas.modelo.Cliente;
 import com.corenetworks.hotelMascotas.servicio.IClienteServicio;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -16,44 +18,50 @@ import java.util.List;
 public class ClienteControlador {
     @Autowired
     private IClienteServicio servicio;
-
-    @GetMapping
-    public ResponseEntity<List<Cliente>> consultarTodos() throws Exception {
-        return new ResponseEntity<>(servicio.listasTodos(), HttpStatus.OK);
-    }
-
     @PostMapping
-    public ResponseEntity<Cliente> insertar( @RequestBody Cliente c)throws Exception {
-        Cliente c1 = servicio.insertar(c);
-        return new ResponseEntity<>(c1, HttpStatus.CREATED);
+    public ResponseEntity<ClienteDTO> insertarCliente(@RequestBody ClienteDTO c)throws Exception {
+        Cliente c1 = c.castCliente();
+        c1= servicio.insertar(c1);
+        return new ResponseEntity<>(c.castClienteDto(c1), HttpStatus.CREATED);
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Cliente> consultarUno(@PathVariable("id") int id)throws Exception {
-        Cliente c1 = servicio.listarUno(id);
-        if (c1 == null) {
-            throw new ExcepcionPersonalizadaNoEncontrado("recurso no encontrado con ID " + id);
-        }
-        return new ResponseEntity<>(c1, HttpStatus.OK);
-    }
-
     @PutMapping
-    public ResponseEntity<Cliente> modificar(@RequestBody Cliente c)throws  Exception {
+    public ResponseEntity<ClienteDTO> modificarCliente(@RequestBody ClienteDTO c)throws  Exception {
         Cliente c1 = servicio.listarUno(c.getIdCliente());
         if (c1==null) {
-            throw new ExcepcionPersonalizadaNoEncontrado("recurso no encontrado" +c.getIdCliente());
+            throw new ExcepcionPersonalizadaNoEncontrado("CLiente no encontrado" +c.getIdCliente());
         }
-        return new ResponseEntity<>(servicio.modificar(c), HttpStatus.OK);
+        c1 = servicio.modificar(c.castCliente());
+        return new ResponseEntity<>(c.castClienteDto(c1), HttpStatus.OK);
     }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable ("id")int id)throws Exception {
+    @GetMapping("/{id}")
+    public ResponseEntity<ClienteDTO> consultarUno(@PathVariable("id") int id)throws Exception {
         Cliente c1 = servicio.listarUno(id);
         if (c1 == null) {
-            throw new ExcepcionPersonalizadaNoEncontrado("recurso no encontrado con ID " + id);
+            throw new ExcepcionPersonalizadaNoEncontrado("Cliente no encontrado con ID " + id);
+        }
+        return new ResponseEntity<>((new ClienteDTO()).castClienteDto(c1), HttpStatus.OK);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminar(@PathVariable (name="id")Integer id)throws Exception {
+        Cliente c1 = servicio.listarUno(id);
+        if (c1 == null) {
+            throw new ExcepcionPersonalizadaNoEncontrado("Cliente no encontrado con ID " + id);
         }
         servicio.eliminar(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
     }
+    @GetMapping
+    public ResponseEntity<List<ClienteDTO>> consultarTodos() throws Exception {
+        List<Cliente> clientesBBDD= servicio.listasTodos();
+        List<ClienteDTO> clienteDto = new ArrayList<>();
+        for (Cliente elemento:
+        clientesBBDD){
+            ClienteDTO eDto = new ClienteDTO();
+            clienteDto.add(eDto.castClienteDto(elemento));
+        }
+        return new ResponseEntity<>(clienteDto, HttpStatus.OK);
+    }
+
+
 }
