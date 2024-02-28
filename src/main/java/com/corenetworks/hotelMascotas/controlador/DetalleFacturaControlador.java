@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/detalles_facturas")
 public class DetalleFacturaControlador {
+    //Dejamos el DTO pal final ya que lleva ids de todas las tablas
     @Autowired
     private IDetalleFacturaServicio servicio;
 

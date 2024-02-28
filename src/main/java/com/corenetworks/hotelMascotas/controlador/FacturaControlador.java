@@ -1,6 +1,7 @@
 package com.corenetworks.hotelMascotas.controlador;
 
 
+import com.corenetworks.hotelMascotas.dto.FacturaDTO;
 import com.corenetworks.hotelMascotas.excepciones.ExcepcionPersonalizadaNoEncontrado;
 import com.corenetworks.hotelMascotas.modelo.Factura;
 import com.corenetworks.hotelMascotas.servicio.IFacturaServicio;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,8 +20,15 @@ public class FacturaControlador {
     private IFacturaServicio servicio;
 
     @GetMapping
-    public ResponseEntity<List<Factura>> consultarTodos() throws Exception {
-        return new ResponseEntity<>(servicio.listasTodos(), HttpStatus.OK);
+    public ResponseEntity<List<FacturaDTO>> consultarTodos() throws Exception {
+        List<Factura> facturasBBDD = servicio.listasTodos();
+        List<FacturaDTO> facturasDTo = new ArrayList<>();
+        for (Factura elemento:
+        facturasBBDD){
+            FacturaDTO eDto= new FacturaDTO();
+            facturasDTo.add(eDto.castFacturaDto(elemento));
+        }
+        return new ResponseEntity<>(facturasDTo, HttpStatus.OK);
     }
 
     @PostMapping
