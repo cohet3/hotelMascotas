@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -18,26 +19,37 @@ public class DetalleFacturaDTO {
     private int idDetalleFactura;
     @NotEmpty
     private String concepto;
+    @NotNull
+    private LocalDate fechaFactura;
     @Min(1)
     @Max(250)
     private double precio;
-    @NotNull
-    private LocalDate fechaFactura;
+    //desde aqui
+    private int idFactura;
+    private int idHabitacion;
+    private int idReserva;
+    private int idMascota;
+    private int idServicio;
 
     public DetalleFactura castDetalleFactura(){
 
         DetalleFactura dF1= new DetalleFactura();
         dF1.setIdDetalleFactura(idDetalleFactura);
         dF1.setConcepto(concepto);
-        dF1.setPrecio(precio);
         dF1.setFechaFactura(fechaFactura);
+        dF1.setPrecio(precio);
         return dF1;
     }
     public DetalleFacturaDTO castDetalleFacturaDto(DetalleFactura dF){
         idDetalleFactura=getIdDetalleFactura();
         concepto=getConcepto();
-        precio=getPrecio();
         fechaFactura=getFechaFactura();
+        precio=getPrecio();
+        idFactura=getIdFactura();
+        idHabitacion=getIdHabitacion();
+        idReserva= getIdReserva();
+        idMascota= getIdMascota();
+        idServicio=getIdServicio();
         return this;
 
     }

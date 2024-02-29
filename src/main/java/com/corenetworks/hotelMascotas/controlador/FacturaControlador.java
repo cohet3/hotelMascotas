@@ -47,9 +47,6 @@ public class FacturaControlador {
         f1= servicio.modificar(f.castFactura());
         return new ResponseEntity<>(f.castFacturaDto(f1), HttpStatus.OK);
     }
-
-
-
     @GetMapping("/{id}")
     public ResponseEntity<FacturaDTO> consultarUno(@PathVariable("id") Integer id)throws Exception {
         Factura f1 = servicio.listarUno(id);

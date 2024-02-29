@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/clientes")
 public class ClienteControlador {
+    //funcionan todos los metodos
     @Autowired
     private IClienteServicio servicio;
     @PostMapping
