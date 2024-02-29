@@ -23,7 +23,7 @@ public class FacturaControlador {
         //no funciona
         Factura f1 = f.castFactura();
         f1 =servicio.insertar(f1);
-        return new ResponseEntity<>(f.castFacturaDto(f1), HttpStatus.CREATED);
+        return new ResponseEntity<>(new FacturaDTO().castFacturaDto(f1), HttpStatus.CREATED);
     }
 
     @GetMapping

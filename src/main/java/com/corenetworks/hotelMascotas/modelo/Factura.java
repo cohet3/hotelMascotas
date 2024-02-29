@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -21,6 +19,5 @@ public class Factura {
     @JoinColumn(name= "idCliente", nullable = true, foreignKey = @ForeignKey(name= "FK_factura_cliente"))
 
     private Cliente cliente;
-
 
 }

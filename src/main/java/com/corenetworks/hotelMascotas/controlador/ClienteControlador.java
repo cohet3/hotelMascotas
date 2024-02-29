@@ -34,7 +34,7 @@ public class ClienteControlador {
         return new ResponseEntity<>(c.castClienteDto(c1), HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<ClienteDTO> consultarUno(@PathVariable("id") int id)throws Exception {
+    public ResponseEntity<ClienteDTO> consultarUnoCliente(@PathVariable("id") int id)throws Exception {
         Cliente c1 = servicio.listarUno(id);
         if (c1 == null) {
             throw new ExcepcionPersonalizadaNoEncontrado("Cliente no encontrado con ID " + id);
