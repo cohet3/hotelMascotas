@@ -1,6 +1,7 @@
 package com.corenetworks.hotelMascotas.modelo;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,10 +20,12 @@ public class ReservaPK implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idReserva;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idMascota", nullable = false, foreignKey = @ForeignKey(name = "FK_reserva_mascota"))
     private Mascota mascota;
     //@JoinTable no se usa porque esta el PK
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idHabitacion", nullable = false, foreignKey = @ForeignKey(name = "FK_reserva_habitacion"))
     private Habitacion habitacion;

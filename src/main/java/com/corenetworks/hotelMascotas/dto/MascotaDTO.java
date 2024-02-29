@@ -25,10 +25,12 @@ public class MascotaDTO {
     @NotEmpty
     private String tipoHabitacion;
 
+
     public Mascota castMascota(){
         Mascota m1=new Mascota();
         m1.setIdMascota(idMascota);
         m1.setNombre(nombre);
+        m1.setRaza(raza);
         m1.setEdad(edad);
         m1.setTamano(tamano);
         m1.setTipoHabitacion(tipoHabitacion);
@@ -37,6 +39,7 @@ public class MascotaDTO {
     public MascotaDTO castMascotaDTO(Mascota m){
         idMascota=m.getIdMascota();
         nombre=m.getNombre();
+        raza=m.getRaza();
         edad=m.getEdad();
         tamano=m.getTamano();
         tipoHabitacion=m.getTipoHabitacion();

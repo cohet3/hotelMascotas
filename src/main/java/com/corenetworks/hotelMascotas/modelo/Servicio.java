@@ -17,8 +17,4 @@ public class Servicio {
     @Column(length = 120)
     private String concepto;
     private double precio;
-
-
-
-
 }
