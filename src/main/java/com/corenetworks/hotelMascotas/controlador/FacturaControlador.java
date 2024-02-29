@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/facturas")
+@CrossOrigin(origins = "http://localhost:4200")
 public class FacturaControlador {
     @Autowired
     private IFacturaServicio servicio;

@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/habitaciones")
+@CrossOrigin(origins = "http://localhost:4200")
 public class HabitacionControlador {
     @Autowired
     private IHabitacionServicio servicio;

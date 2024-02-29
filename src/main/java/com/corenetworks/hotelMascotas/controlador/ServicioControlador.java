@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 @RestController
 @RequestMapping("/servicios")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ServicioControlador {
         @Autowired
         private IServicioServicio servicio;
