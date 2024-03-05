@@ -1,11 +1,11 @@
 package com.corenetworks.hotelMascotas.servicio.impl;
 
-import com.corenetworks.hotelMascotas.modelo.Mascota;
+
 import com.corenetworks.hotelMascotas.modelo.Reserva;
 import com.corenetworks.hotelMascotas.repositorio.IGenericoRepositorio;
-import com.corenetworks.hotelMascotas.repositorio.IMascotaRepositorio;
+
 import com.corenetworks.hotelMascotas.repositorio.IReservaRepositorio;
-import com.corenetworks.hotelMascotas.servicio.IMascotaServicio;
+
 import com.corenetworks.hotelMascotas.servicio.IReservaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

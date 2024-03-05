@@ -28,7 +28,7 @@ public class Mascota {
     private String tamano;
     @Column (length = 30,nullable = false)
     private String tipoHabitacion;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "mascota",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Reserva> reservas;
     @JsonIgnore
