@@ -16,8 +16,6 @@ public class FacturaDTO {
     private  Cliente cliente;
 
     public Factura castFactura(){
-
-
         Factura f1= new Factura();
         f1.setIdFactura(idFactura);
         f1.setCliente(cliente);
