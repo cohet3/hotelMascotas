@@ -24,27 +24,30 @@ public class ReservaDTO {
     @Min(1)
     @Max(40)
     private double precio;
-    private Mascota mascota;
-
-    private Habitacion habitacion;
+    private Integer idHabitacion;
+    private Integer idMascota;
 
     public Reserva castReserva(){
         Reserva r1=new Reserva();
+        Habitacion h1= new Habitacion();
+        Mascota m1= new Mascota();
         r1.setIdReserva(idReserva);
         r1.setFechaEntrada(fechaEntrada);
         r1.setFechaSalida(fechaSalida);
         r1.setPrecio(precio);
-        r1.setMascota(mascota);
-        r1.setHabitacion(habitacion);
+        m1.setIdMascota(idMascota);
+        h1.setIdHabitacion(idHabitacion);
         return r1;
     }
     public ReservaDTO castReservaDTO(Reserva r){
+        Habitacion h1= new Habitacion();
+        Mascota m1= new Mascota();
         idReserva=r.getIdReserva();
         fechaEntrada=r.getFechaEntrada();
         fechaSalida=r.getFechaSalida();
         precio=r.getPrecio();
-        mascota=r.getMascota();
-        habitacion=r.getHabitacion();
+        idMascota= m1.getIdMascota();
+        idHabitacion=h1.getIdHabitacion();
         return this;
 
     }

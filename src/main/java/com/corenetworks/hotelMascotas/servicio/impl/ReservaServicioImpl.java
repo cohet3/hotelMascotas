@@ -10,6 +10,8 @@ import com.corenetworks.hotelMascotas.servicio.IReservaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReservaServicioImpl extends CRUDImpl<Reserva,Integer>implements IReservaServicio {
     @Autowired
@@ -17,5 +19,10 @@ public class ReservaServicioImpl extends CRUDImpl<Reserva,Integer>implements IRe
     @Override
     protected IGenericoRepositorio<Reserva, Integer> getRepo() {
         return repo;
+    }
+
+    @Override
+    public List<Object[]> obtenerReservas() {
+        return repo.obtenerReservas();
     }
 }

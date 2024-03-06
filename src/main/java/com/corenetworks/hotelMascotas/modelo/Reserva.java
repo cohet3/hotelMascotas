@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idReserva;
+    private Integer idReserva;
     private Mascota mascota;
     private Habitacion habitacion;
     private LocalDate fechaEntrada;

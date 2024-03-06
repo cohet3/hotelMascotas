@@ -20,12 +20,11 @@ public class ReservaPK implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idReserva;
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idMascota", nullable = false, foreignKey = @ForeignKey(name = "FK_reserva_mascota"))
     private Mascota mascota;
     //@JoinTable no se usa porque esta el PK
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name = "idHabitacion", nullable = false, foreignKey = @ForeignKey(name = "FK_reserva_habitacion"))
     private Habitacion habitacion;
