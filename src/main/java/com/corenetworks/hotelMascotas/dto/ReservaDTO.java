@@ -49,8 +49,6 @@ public class ReservaDTO {
         idMascota= m1.getIdMascota();
         idHabitacion=h1.getIdHabitacion();
         return this;
-
     }
-
 }
 

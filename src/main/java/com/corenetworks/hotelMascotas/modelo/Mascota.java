@@ -33,7 +33,7 @@ public class Mascota {
     private List<Reserva> reservas;
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name= "idCliente", nullable = false, foreignKey = @ForeignKey(name= "FK_mascota_cliente"))
+    @JoinColumn(name= "idCliente", nullable = true, foreignKey = @ForeignKey(name= "FK_mascota_cliente"))
     private Cliente cliente;
 
 }
