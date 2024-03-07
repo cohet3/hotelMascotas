@@ -19,7 +19,10 @@ public class MascotaDTO {
     private int edad;
     private String tamano;
     private String tipoHabitacion;
+
     Cliente c1= new Cliente();
+
+
     public Mascota castMascota(){
         Mascota m1=new Mascota();
         m1.setIdMascota(idMascota);
@@ -39,6 +42,8 @@ public class MascotaDTO {
         edad=m.getEdad();
         tamano=m.getTamano();
         tipoHabitacion=m.getTipoHabitacion();
+
+
         return this;
     }
 }

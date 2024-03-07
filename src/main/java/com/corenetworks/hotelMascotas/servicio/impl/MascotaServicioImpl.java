@@ -1,5 +1,6 @@
 package com.corenetworks.hotelMascotas.servicio.impl;
 
+import com.corenetworks.hotelMascotas.dto.MascotaDTO;
 import com.corenetworks.hotelMascotas.modelo.Mascota;
 import com.corenetworks.hotelMascotas.repositorio.IGenericoRepositorio;
 import com.corenetworks.hotelMascotas.repositorio.IMascotaRepositorio;
@@ -14,5 +15,10 @@ public class MascotaServicioImpl extends CRUDImpl<Mascota,Integer>implements IMa
     @Override
     protected IGenericoRepositorio<Mascota, Integer> getRepo() {
         return repo;
+    }
+
+    @Override
+    public Integer insertarUnaMascota(MascotaDTO m) {
+        return repo.insertaUnaMascota(m.getEdad(),m.getNombre(),m.getRaza(),m.getTamano(),m.getTipoHabitacion(),m.getIdCliente());
     }
 }
