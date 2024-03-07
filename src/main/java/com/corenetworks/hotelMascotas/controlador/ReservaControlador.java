@@ -1,6 +1,7 @@
 package com.corenetworks.hotelMascotas.controlador;
 
 
+import com.corenetworks.hotelMascotas.dto.ObtenerFechasDTO;
 import com.corenetworks.hotelMascotas.dto.ReservaDTO;
 import com.corenetworks.hotelMascotas.excepciones.ExcepcionPersonalizadaNoEncontrado;
 import com.corenetworks.hotelMascotas.modelo.Reserva;
@@ -65,6 +66,9 @@ public class ReservaControlador {
         }
         return new ResponseEntity<>(reservasDto, HttpStatus.OK);
     }
-
+    @GetMapping("/fechas")
+    public List<ObtenerFechasDTO> obtenerFechasDTO(){
+        return servicio.obtenerFechas();
+    }
 
 }

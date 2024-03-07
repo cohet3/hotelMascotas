@@ -26,7 +26,6 @@ public class ReservaDTO {
     private double precio;
     private Integer idHabitacion;
     private Integer idMascota;
-
     public Reserva castReserva(){
         Reserva r1=new Reserva();
         Habitacion h1= new Habitacion();

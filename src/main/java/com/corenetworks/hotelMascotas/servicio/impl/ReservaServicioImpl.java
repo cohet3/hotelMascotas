@@ -1,6 +1,7 @@
 package com.corenetworks.hotelMascotas.servicio.impl;
 
 
+import com.corenetworks.hotelMascotas.dto.ObtenerFechasDTO;
 import com.corenetworks.hotelMascotas.modelo.Reserva;
 import com.corenetworks.hotelMascotas.repositorio.IGenericoRepositorio;
 
@@ -21,8 +22,13 @@ public class ReservaServicioImpl extends CRUDImpl<Reserva,Integer>implements IRe
         return repo;
     }
 
+//    @Override
+//    public List<Object[]> obtenerReservas() {
+//        return repo.obtenerReservas();
+//    }
+
     @Override
-    public List<Object[]> obtenerReservas() {
-        return repo.obtenerReservas();
+    public List<ObtenerFechasDTO> obtenerFechas() {
+        return null;
     }
 }
