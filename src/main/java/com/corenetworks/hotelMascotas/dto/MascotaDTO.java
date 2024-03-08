@@ -19,26 +19,31 @@ public class MascotaDTO {
     private int edad;
     private String tamano;
     private String tipoHabitacion;
-    private int idCliente;
+
+    Cliente c1= new Cliente();
+
+
     public Mascota castMascota(){
         Mascota m1=new Mascota();
         m1.setIdMascota(idMascota);
         m1.setNombre(nombre);
-        m1.setEdad(edad);
         m1.setRaza(raza);
+        m1.setEdad(edad);
         m1.setTamano(tamano);
         m1.setTipoHabitacion(tipoHabitacion);
      //   c1.setIdCliente(idCliente);
-
+        m1.setCliente(c1);
         return m1;
     }
     public MascotaDTO castMascotaDTO(Mascota m){
         idMascota=m.getIdMascota();
         nombre=m.getNombre();
-        edad=m.getEdad();
         raza=m.getRaza();
+        edad=m.getEdad();
         tamano=m.getTamano();
         tipoHabitacion=m.getTipoHabitacion();
+
+
         return this;
     }
 }
