@@ -10,6 +10,7 @@ import com.corenetworks.hotelMascotas.servicio.IReservaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -22,7 +23,8 @@ public class ReservaServicioImpl extends CRUDImpl<Reserva,Integer>implements IRe
     }
 
     @Override
-    public List<Object[]> obtenerReservas() {
-        return repo.obtenerReservas();
+    public List<Reserva> obtenerReservas(LocalDate f1, LocalDate f2) {
+        return repo.obtenerReservas( f1, f2);
     }
+
 }
