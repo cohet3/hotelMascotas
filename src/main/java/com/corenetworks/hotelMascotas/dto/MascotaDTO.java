@@ -19,9 +19,7 @@ public class MascotaDTO {
     private int edad;
     private String tamano;
     private String tipoHabitacion;
-
-    Cliente c1= new Cliente();
-
+    private int idCliente;
 
     public Mascota castMascota(){
         Mascota m1=new Mascota();
@@ -32,7 +30,7 @@ public class MascotaDTO {
         m1.setTamano(tamano);
         m1.setTipoHabitacion(tipoHabitacion);
      //   c1.setIdCliente(idCliente);
-        m1.setCliente(c1);
+  /*      m1.setCliente(c1);*/
         return m1;
     }
     public MascotaDTO castMascotaDTO(Mascota m){
