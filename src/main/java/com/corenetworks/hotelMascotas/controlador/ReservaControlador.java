@@ -7,6 +7,7 @@ import com.corenetworks.hotelMascotas.excepciones.ExcepcionPersonalizadaNoEncont
 import com.corenetworks.hotelMascotas.modelo.Reserva;
 
 import com.corenetworks.hotelMascotas.servicio.IReservaServicio;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,10 +24,10 @@ public class ReservaControlador {
     @Autowired
     private IReservaServicio servicio;
     @PostMapping
-    public ResponseEntity<ReservaDTO> insertar(@RequestBody ReservaDTO r)throws Exception {
-        Reserva r1 = r.castReserva();
-        r1 = servicio.insertar(r1);
-        return new ResponseEntity<>(r.castReservaDTO(r1), HttpStatus.CREATED);
+    public ResponseEntity<Integer> insertarREserva(@Valid @RequestBody ReservaDTO r)throws Exception {
+
+        Integer i=servicio.insert1Reserva(r);
+        return new ResponseEntity<>(i, HttpStatus.CREATED);
     }
     @PutMapping
     public ResponseEntity<ReservaDTO> modificar(@RequestBody ReservaDTO r)throws  Exception {
