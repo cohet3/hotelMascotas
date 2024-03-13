@@ -19,7 +19,7 @@ public class DetalleFactura {
     private int idDetalleFactura;
     @Column(length = 120)
     private String concepto;
-    private double precio;
+    private double precioDF;
     private LocalDate fechaFactura;
     @ManyToOne
     @JoinColumns({

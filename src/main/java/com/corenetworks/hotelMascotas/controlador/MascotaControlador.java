@@ -20,14 +20,17 @@ public class MascotaControlador {
     @Autowired
     private IMascotaServicio servicio;
     @PutMapping
-    public ResponseEntity<Integer> modificarMascota(@RequestBody MascotaDTO m)throws  Exception {
-        Integer i =servicio.insertarUnaMascota(m);
-        System.out.println(i);
-        if (i==null) {
-            throw new ExcepcionPersonalizadaNoEncontrado("recurso no encontrado" +m.getIdMascota());
-        }
+    public ResponseEntity<MascotaDTO> modificarMascota(@RequestBody MascotaDTO m)throws  Exception {
+        System.out.println(m.toString());
+        Mascota m1 = servicio.listarUno(m.getIdMascota());
 
-        return new ResponseEntity<>(i, HttpStatus.CREATED);
+
+
+        if (m1==null) {
+            throw new ExcepcionPersonalizadaNoEncontrado("Mascota no encontrada" +m.getIdMascota());
+        }
+        m1=servicio.modificar(m.castMascota());
+        return new ResponseEntity<>(m.castMascotaDTO(m1), HttpStatus.CREATED);
     }
 
     @GetMapping

@@ -11,23 +11,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FacturaDTO {
     private int idFactura;
-    //como paso el id cliente y no el cliente entero?
-    //el crud funciona pero aun no entiendo bien como vamos a pasarle el parametro idCliente
     private  Cliente cliente;
-
     public Factura castFactura(){
         Factura f1= new Factura();
         f1.setIdFactura(idFactura);
         f1.setCliente(cliente);
-
         return f1;
     }
     public FacturaDTO castFacturaDto(Factura f){
         idFactura=f.getIdFactura();
         cliente=f.getCliente();
-
-
         return this;
-
     }
 }

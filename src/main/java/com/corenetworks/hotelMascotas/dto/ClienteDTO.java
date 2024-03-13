@@ -1,6 +1,8 @@
 package com.corenetworks.hotelMascotas.dto;
 
 import com.corenetworks.hotelMascotas.modelo.Cliente;
+import com.corenetworks.hotelMascotas.modelo.Factura;
+import com.corenetworks.hotelMascotas.modelo.Mascota;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -8,6 +10,8 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,9 +23,11 @@ public class ClienteDTO {
     private String nombre;
     @NotNull
     private String direccion;
-    @Max(9)
+    @Size(min = 9,max = 9)
     private String telefono;
 
+    private List<Mascota> mascotas;
+    private List<Factura> facturas;
 
     public Cliente castCliente(){
 
@@ -37,6 +43,8 @@ public class ClienteDTO {
         nombre=c.getNombre();
         direccion=c.getDireccion();
         telefono=c.getTelefono();
+        mascotas=c.getMascotas();
+        facturas=c.getFacturas();
         return this;
 
     }
