@@ -29,8 +29,6 @@ public class MascotaDTO {
         m1.setEdad(edad);
         m1.setTamano(tamano);
         m1.setTipoHabitacion(tipoHabitacion);
-     //   c1.setIdCliente(idCliente);
-  /*      m1.setCliente(c1);*/
         return m1;
     }
     public MascotaDTO castMascotaDTO(Mascota m){
@@ -40,8 +38,6 @@ public class MascotaDTO {
         edad=m.getEdad();
         tamano=m.getTamano();
         tipoHabitacion=m.getTipoHabitacion();
-
-
         return this;
     }
 }

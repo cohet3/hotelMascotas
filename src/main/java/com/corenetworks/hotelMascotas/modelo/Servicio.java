@@ -19,4 +19,5 @@ public class Servicio {
     private double precio;
     private String imagen;
     private String descripcion;
+    private int cantidad;
 }

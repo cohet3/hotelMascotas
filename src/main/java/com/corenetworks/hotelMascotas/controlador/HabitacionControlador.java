@@ -65,10 +65,4 @@ public class HabitacionControlador {
         }
         return new ResponseEntity<>(habitacionesDto, HttpStatus.OK);
     }
-
-
-
-
-
-
 }
